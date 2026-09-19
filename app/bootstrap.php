@@ -2,7 +2,15 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$vendorAutoload = __DIR__ . '/../vendor/autoload.php';
+
+if (!is_file($vendorAutoload)) {
+    error_log('Bootstrap failure: vendor/autoload.php not found. Run "composer install" in the project root.');
+    http_response_code(500);
+    exit('Application is not configured correctly. Please contact the administrator.');
+}
+
+require_once $vendorAutoload;
 
 // Simple PSR-4-ish autoloader for the App\ namespace (no Composer dependency).
 spl_autoload_register(function (string $class): void {
