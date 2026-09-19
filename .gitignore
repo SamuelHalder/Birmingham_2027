@@ -1,0 +1,8 @@
+.env
+node_modules/
+vendor/
+*.log
+logs/
+.DS_Store
+Thumbs.db
+public/assets/css/*.map

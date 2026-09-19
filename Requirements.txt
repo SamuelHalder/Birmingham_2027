@@ -1,0 +1,381 @@
+We are starting development of the Birmingham 2027 Convention Administration Panel.
+
+This is a custom PHP-based admin dashboard. At this stage, DO NOT build any convention-specific modules such as registration, hotels, meals, visa letters, payments, or participant management. We are building the reusable application foundation first.
+
+CURRENT PROJECT STRUCTURE
+
+Birmingham_2027/
+├── .agents/
+│   └── skills/
+│       └── daisyui/
+│           ├── colors/
+│           ├── components/
+│           ├── config/
+│           ├── install/
+│           ├── usage/
+│           └── SKILL.md
+│
+├── assets/
+│   └── css/
+│       ├── input.css
+
+├── node_modules/
+│
+├── public/
+│   └── assets/
+│       └── css/
+│           └── output.css
+│
+├── package.json
+├── package-lock.json
+└── skills-lock.json
+
+TECHNOLOGY
+
+- PHP
+- MySQL/MariaDB
+- Tailwind CSS
+- daisyUI
+- Vanilla JavaScript
+- Git/GitHub
+
+Tailwind is currently being compiled using:
+
+npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch
+
+IMPORTANT:
+The source CSS is outside the public directory.
+The browser-accessible CSS must ultimately be available from the public directory.
+
+Do not change the existing Tailwind/daisyUI setup unless necessary. Inspect the existing configuration before making changes.
+
+PROJECT GOAL
+
+Build a professional, reusable administration-panel foundation for Birmingham 2027.
+
+The foundation should make it easy to add future modules without redesigning the application architecture.
+
+The future modules will include:
+
+- Registration
+- Participants
+- Hotels
+- Meals
+- Visa Letters
+- Activities
+- Reports
+- Payments
+- Other convention administration features
+
+For now, build ONLY:
+
+1. Application structure
+2. Database connection foundation
+3. Authentication
+4. Login/logout
+5. User sessions
+6. User roles
+7. User management
+8. Dashboard shell
+9. Sidebar
+10. Header
+11. Footer
+12. Breadcrumbs
+13. Page headers
+14. Reusable UI components
+15. Basic dashboard page
+16. Authentication/authorization middleware
+17. Security foundation
+
+USER ROLES
+
+There are two roles:
+
+SUPER ADMIN
+- Full access to the administration panel
+- Can access all modules
+- Can create users
+- Can edit users
+- Can disable users
+- Can assign Admin or Super Admin roles
+- Can manage other administrative users
+
+ADMIN
+- Can access the administration panel
+- Can access all normal convention-management functionality
+- Cannot create users
+- Cannot manage users
+- Cannot change user roles
+
+Keep the authorization architecture simple and extensible.
+
+Use role-based authorization rather than hard-coding checks throughout individual pages.
+
+For example, create reusable authorization functions/middleware such as:
+
+requireLogin();
+requireRole('super_admin');
+
+Do not duplicate authentication logic inside every page.
+
+AUTHENTICATION
+
+Implement:
+
+- Login page
+- Logout
+- Secure PHP sessions
+- Password hashing using password_hash()
+- Password verification using password_verify()
+- Session regeneration after successful login
+- Authentication middleware
+- Authorization middleware
+- Protection against unauthenticated access to dashboard pages
+- Protection against Admin users accessing Super Admin-only functionality
+- CSRF protection for POST forms
+- Server-side validation
+- Prepared SQL statements
+- No plaintext passwords
+
+Do not store passwords in plaintext.
+
+DATABASE
+
+Create a clean database foundation.
+
+At minimum, create a users table with appropriate fields such as:
+
+- id
+- name
+- email
+- password_hash
+- role
+- is_active
+- created_at
+- updated_at
+- last_login_at
+
+Use an appropriate database design and indexes.
+
+Do not create convention-specific tables yet.
+
+Create a reusable database connection layer rather than opening a new database connection manually inside every page.
+
+Use environment variables/configuration for database credentials.
+
+Never commit database passwords or secrets to Git.
+
+APPLICATION STRUCTURE
+
+Use a clean separation between:
+
+- public files
+- application logic
+- components
+- configuration
+- authentication
+- middleware
+- database code
+- assets
+
+The browser should only be able to directly access files intended to be public.
+
+Do not place sensitive PHP files, configuration files, database credentials, or internal application logic inside the publicly accessible asset structure.
+
+Create a sensible PHP structure.
+
+For example, use a structure along these lines, but adapt it to the existing project rather than blindly replacing it:
+
+app/
+├── config/
+├── database/
+├── auth/
+├── middleware/
+├── helpers/
+└── components/
+
+public/
+├── index.php
+├── login.php
+├── logout.php
+├── dashboard/
+└── assets/
+
+Do not create unnecessary complexity or introduce a framework.
+
+REUSABLE PHP COMPONENTS
+
+The dashboard should use reusable PHP components.
+
+Create components for at least:
+
+- Header
+- Sidebar
+- Footer
+- Breadcrumbs
+- Page header
+- Card
+- Stat card
+- Alert
+- Button where appropriate
+- Modal
+- Table/status elements where appropriate
+
+Components should be designed so pages can reuse them rather than copying HTML.
+
+For example:
+
+<?php require ... ?>
+
+The exact component API should be clean and consistent.
+
+DASHBOARD LAYOUT
+
+Create a responsive dashboard layout with:
+
+- Fixed/collapsible sidebar on desktop
+- Mobile-friendly navigation
+- Header
+- Main content area
+- Footer
+
+The sidebar should have navigation items suitable for the future application, but do not implement the actual convention modules yet.
+
+Use placeholder navigation items where necessary.
+
+Suggested navigation:
+
+Dashboard
+
+Convention
+    Registration
+    Participants
+    Hotels
+    Meals
+    Visa Letters
+
+Management
+    Users
+
+Reports
+
+Settings
+
+However, clearly mark future/unimplemented sections rather than pretending those modules already exist.
+
+Only Users and Dashboard need to function at this stage.
+
+DESIGN
+
+Use Tailwind CSS and daisyUI.
+
+Follow the daisyUI skill files available in:
+
+.agents/skills/daisyui/
+
+Read and follow the relevant daisyUI skill documentation before creating components.
+
+Do not introduce:
+
+- Bootstrap
+- React
+- Vue
+- another CSS framework
+- another UI component library
+
+Keep the UI professional and appropriate for an administrative system.
+
+Use consistent:
+
+- spacing
+- typography
+- buttons
+- cards
+- forms
+- tables
+- alerts
+- modal dialogs
+- navigation
+- responsive behavior
+
+Do not over-design the dashboard with unnecessary animations.
+
+Use semantic HTML and accessibility-friendly controls.
+
+SECURITY
+
+Treat security as a first-class requirement.
+
+Implement the foundation with:
+
+- Prepared SQL statements
+- Password hashing
+- CSRF protection
+- Session security
+- Authentication middleware
+- Authorization middleware
+- Input validation
+- Output escaping
+- Secure error handling
+- No credentials in source control
+
+Do not expose database errors, passwords, stack traces, or internal paths to users.
+
+Use htmlspecialchars() or an appropriate escaping helper when rendering user-controlled text.
+
+CONFIGURATION
+
+Use environment-based configuration where practical.
+
+Create a .env.example if appropriate.
+
+Do not create or commit a real .env file containing credentials.
+
+Create a .gitignore appropriate for:
+
+- .env
+- node_modules where appropriate
+- logs
+- generated files
+- temporary files
+
+CODE QUALITY
+
+Use clear PHP naming conventions.
+
+Avoid giant PHP files.
+
+Avoid duplicating HTML.
+
+Avoid mixing large amounts of database logic directly into presentation files.
+
+Keep authentication, authorization, database access, components, and page logic separated.
+
+Use comments only where they add useful context.
+
+Do not add unnecessary dependencies.
+
+IMPORTANT DEVELOPMENT RULE
+
+Before creating files:
+
+1. Inspect the current project structure.
+2. Inspect package.json.
+3. Inspect the existing Tailwind input.css.
+4. Inspect the daisyUI skill documentation under .agents/skills/daisyui/.
+5. Determine what already exists.
+6. Do not overwrite existing configuration unnecessarily.
+
+Then propose the final architecture and implementation plan.
+
+After the plan is agreed, implement the foundation incrementally.
+
+DO NOT implement registration, hotel reconciliation, meals, visa letters, payments, WordPress integration, Ninja Forms integration, chatbot, Signal integration, or participant self-service yet.
+
+Those will be implemented later as separate modules on top of this foundation.
+
+The goal of this phase is:
+
+AUTHENTICATION + USERS + ROLES + DASHBOARD SHELL + REUSABLE COMPONENT SYSTEM
+
+Make the architecture extensible so future modules can plug into it cleanly.
