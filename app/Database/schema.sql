@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Default super admin (password: ChangeMe123!) - change immediately after first login.
--- INSERT INTO users (name, email, password_hash, role) VALUES
---   ('Super Admin', 'admin@example.com', '$2y$10$replace-with-real-hash', 'super_admin');
+    -- INSERT INTO users (name, email, password_hash, role) VALUES
+    --   ('Super Admin', 'admin@example.com', '$2y$10$replace-with-real-hash', 'super_admin');
 
 CREATE TABLE IF NOT EXISTS visa_requests (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
