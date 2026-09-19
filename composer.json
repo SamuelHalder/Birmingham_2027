@@ -1,0 +1,7 @@
+{
+    "name": "birmingham2027/admin-panel",
+    "type": "project",
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}

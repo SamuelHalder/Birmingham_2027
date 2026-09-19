@@ -20,7 +20,7 @@ $navSections = [
             ['label' => 'Participants', 'href' => '#', 'icon' => 'users', 'implemented' => false],
             ['label' => 'Hotels', 'href' => '#', 'icon' => 'building', 'implemented' => false],
             ['label' => 'Meals', 'href' => '#', 'icon' => 'utensils', 'implemented' => false],
-            ['label' => 'Visa Letters', 'href' => '#', 'icon' => 'file', 'implemented' => false],
+            ['label' => 'Visa Letters', 'href' => '/dashboard/visa/', 'icon' => 'file', 'implemented' => true],
         ],
     ],
     [

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 // Simple PSR-4-ish autoloader for the App\ namespace (no Composer dependency).
 spl_autoload_register(function (string $class): void {
     $prefix = 'App\\';

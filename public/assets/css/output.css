@@ -20,6 +20,9 @@
     --spacing: 0.25rem;
     --container-sm: 24rem;
     --container-lg: 32rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-4xl: 56rem;
     --container-7xl: 80rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
@@ -9060,6 +9063,9 @@
       }
     }
   }
+  .absolute {
+    position: absolute;
+  }
   .fixed {
     position: fixed;
   }
@@ -12111,6 +12117,9 @@
       mask-position: center;
     }
   }
+  .block {
+    display: block;
+  }
   @layer daisyui.l1.l2 {
     .divider-end:after {
       display: none;
@@ -12375,6 +12384,12 @@
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
+  .h-\[75vh\] {
+    height: 75vh;
+  }
+  .h-\[90vh\] {
+    height: 90vh;
+  }
   .min-h-full {
     min-height: 100%;
   }
@@ -12496,6 +12511,15 @@
   }
   .w-full {
     width: 100%;
+  }
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
   }
   .max-w-7xl {
     max-width: var(--container-7xl);
@@ -13192,6 +13216,9 @@
       padding-inline: calc(0.25rem * 2);
       padding-block: 0.25rem;
     }
+  }
+  .rounded {
+    border-radius: 0.25rem;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -14534,6 +14561,9 @@
   .tracking-wide {
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   @layer daisyui.l1.l2 {
     .file-input-accent {
@@ -16338,6 +16368,9 @@
     }
   }
   @media (width >= 40rem) {
+    .sm\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
     .sm\:hidden {
       display: none;
     }
@@ -16387,6 +16420,9 @@
     }
     .sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .sm\:flex-row {
       flex-direction: row;
