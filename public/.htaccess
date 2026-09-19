@@ -1,5 +1,0 @@
-# public/ is the web/document root. Block direct access to dotfiles
-# (.env, .htaccess, .git*) even though these should not exist here.
-<FilesMatch "^\.">
-    Require all denied
-</FilesMatch>

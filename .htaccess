@@ -1,4 +1,0 @@
-# Defense in depth: if the web server's document root is ever misconfigured
-# to the project root instead of public/, this blocks direct access.
-# The primary security boundary is the server vhost document root = public/.
-Require all denied
